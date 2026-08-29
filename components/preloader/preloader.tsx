@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { useLenis } from "@/hooks/use-lenis";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { EASE, DURATION } from "@/lib/gsap/tokens";
 import { PreloaderProgress } from "./preloader-progress";
 
 const PreloaderContext = createContext(false);
@@ -46,9 +47,21 @@ export function Preloader({ children }: { children: ReactNode }) {
               lenis?.start();
             },
           })
-          .to("[data-preloader-word]", { clipPath: "inset(0 0 0% 0)", duration: 0.9, ease: "power4.out" })
-          .to("[data-preloader-progress]", { opacity: 0, duration: 0.4, ease: "power2.in" }, "-=0.2")
-          .to(overlayRef.current, { yPercent: -100, duration: 0.8, ease: "power4.inOut" })
+          .to("[data-preloader-word]", {
+            clipPath: "inset(0 0 0% 0)",
+            duration: DURATION.base,
+            ease: EASE.entrance,
+          })
+          .to(
+            "[data-preloader-progress]",
+            { opacity: 0, duration: DURATION.fast, ease: EASE.exit },
+            "-=0.2"
+          )
+          .to(overlayRef.current, {
+            yPercent: -100,
+            duration: DURATION.base,
+            ease: EASE.transition,
+          })
           .set(overlayRef.current, { display: "none" });
       });
     },

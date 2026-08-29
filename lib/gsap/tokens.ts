@@ -2,6 +2,7 @@ export const EASE = {
   standard: "power3.out",
   entrance: "power4.out",
   exit: "power2.in",
+  transition: "power4.inOut",
 } as const;
 
 export const DURATION = {

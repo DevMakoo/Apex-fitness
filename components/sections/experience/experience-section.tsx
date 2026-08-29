@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { EASE, DURATION } from "@/lib/gsap/tokens";
 import { ExperienceVisual } from "./experience-visual";
 
 const STEPS = [
@@ -67,28 +68,32 @@ export function ExperienceSection() {
       });
 
       // Beat 1 — intro hands off to the first step.
-      tl.to(introEl, { autoAlpha: 0, duration: 0.5 }, 1).to(
+      tl.to(introEl, { autoAlpha: 0, duration: DURATION.fast, ease: EASE.standard }, 1).to(
         textPanels[0],
-        { autoAlpha: 1, duration: 0.5 },
+        { autoAlpha: 1, duration: DURATION.fast, ease: EASE.standard },
         1
       );
 
       // Beats 2–4 — step-to-step crossfades, text and visual together.
       for (let i = 1; i < STEPS.length; i += 1) {
         const position = i + 1;
-        tl.to(textPanels[i - 1], { autoAlpha: 0, duration: 0.5 }, position)
-          .to(textPanels[i], { autoAlpha: 1, duration: 0.5 }, position)
-          .to(visualPanels[i - 1], { autoAlpha: 0, duration: 0.5 }, position)
-          .to(visualPanels[i], { autoAlpha: 1, duration: 0.5 }, position);
+        tl.to(textPanels[i - 1], { autoAlpha: 0, duration: DURATION.fast, ease: EASE.standard }, position)
+          .to(textPanels[i], { autoAlpha: 1, duration: DURATION.fast, ease: EASE.standard }, position)
+          .to(
+            visualPanels[i - 1],
+            { autoAlpha: 0, duration: DURATION.fast, ease: EASE.standard },
+            position
+          )
+          .to(visualPanels[i], { autoAlpha: 1, duration: DURATION.fast, ease: EASE.standard }, position);
       }
 
       // Final beat — the last step resolves into the outro line.
       const lastPosition = STEPS.length + 1;
-      tl.to(textPanels[STEPS.length - 1], { autoAlpha: 0, duration: 0.5 }, lastPosition).to(
-        outroEl,
-        { autoAlpha: 1, duration: 0.5 },
+      tl.to(
+        textPanels[STEPS.length - 1],
+        { autoAlpha: 0, duration: DURATION.fast, ease: EASE.standard },
         lastPosition
-      );
+      ).to(outroEl, { autoAlpha: 1, duration: DURATION.fast, ease: EASE.standard }, lastPosition);
     },
     { scope: sectionRef, dependencies: [reducedMotion] }
   );

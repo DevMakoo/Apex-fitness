@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import { EASE, DURATION } from "@/lib/gsap/tokens";
 
 export function PreloaderProgress() {
   const ref = useRef<HTMLSpanElement>(null);
@@ -11,8 +12,8 @@ export function PreloaderProgress() {
     const counter = { value: 0 };
     gsap.to(counter, {
       value: 100,
-      duration: 0.8,
-      ease: "power1.out",
+      duration: DURATION.base,
+      ease: EASE.standard,
       onUpdate: () => {
         if (ref.current) ref.current.textContent = `${Math.round(counter.value)}%`;
       },

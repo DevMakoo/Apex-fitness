@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePreloaderComplete } from "@/components/preloader/preloader";
+import { MagneticButton } from "@/components/common/magnetic-button";
 
 const NAV_LINKS = [
   { href: "#programs", label: "Programs" },
@@ -49,12 +50,12 @@ export function Navbar() {
           </li>
         ))}
       </ul>
-      <a
+      <MagneticButton
         href="#membership"
         className="rounded-full border border-foreground px-5 py-2 text-sm uppercase tracking-wide text-foreground"
       >
         Join
-      </a>
+      </MagneticButton>
     </nav>
   );
 }

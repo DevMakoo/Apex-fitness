@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { usePreloaderComplete } from "@/components/preloader/preloader";
 import { RevealText } from "@/components/common/reveal-text";
+import { MagneticButton } from "@/components/common/magnetic-button";
 import { EASE, DURATION } from "@/lib/gsap/tokens";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
@@ -51,12 +52,12 @@ export function HeroCopy() {
           APEX is a performance training studio built for athletes who refuse to plateau. Precision
           programming, elite coaching, uncompromising standards.
         </p>
-        <a
+        <MagneticButton
           href="#membership"
           className="mt-8 inline-flex items-center rounded-full bg-foreground px-6 py-3 text-sm uppercase tracking-wide text-background"
         >
           Start Training
-        </a>
+        </MagneticButton>
       </div>
     </div>
   );
