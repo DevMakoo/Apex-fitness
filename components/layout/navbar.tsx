@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePreloaderComplete } from "@/components/preloader/preloader";
 import { MagneticButton } from "@/components/common/magnetic-button";
+import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { href: "#programs", label: "Programs" },
@@ -70,24 +71,25 @@ export function Navbar() {
           {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
       </div>
-      {open && (
-        <ul
-          id="mobile-nav"
-          className="absolute inset-x-0 top-full flex flex-col gap-4 bg-background p-6 text-foreground md:hidden"
-        >
-          {[...NAV_LINKS, { href: "#membership", label: "Join" }].map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="block text-sm uppercase tracking-wide"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
+      <ul
+        id="mobile-nav"
+        className={cn(
+          "absolute inset-x-0 top-full flex-col gap-4 bg-background p-6 text-foreground md:hidden",
+          open ? "flex" : "hidden"
+        )}
+      >
+        {[...NAV_LINKS, { href: "#membership", label: "Join" }].map((link) => (
+          <li key={link.href}>
+            <a
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="block text-sm uppercase tracking-wide"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 }

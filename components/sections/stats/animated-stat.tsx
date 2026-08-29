@@ -17,7 +17,7 @@ export function AnimatedStat({ stat }: { stat: Stat }) {
       if (!node) return;
 
       if (reducedMotion) {
-        node.textContent = `${stat.value.toLocaleString()}${stat.suffix ?? ""}`;
+        node.textContent = `${stat.value.toLocaleString("en-US")}${stat.suffix ?? ""}`;
         return;
       }
 
@@ -28,7 +28,7 @@ export function AnimatedStat({ stat }: { stat: Stat }) {
         ease: EASE.standard,
         scrollTrigger: { trigger: node, start: "top 85%", once: true },
         onUpdate: () => {
-          node.textContent = `${Math.round(counter.value).toLocaleString()}${stat.suffix ?? ""}`;
+          node.textContent = `${Math.round(counter.value).toLocaleString("en-US")}${stat.suffix ?? ""}`;
         },
       });
     },
