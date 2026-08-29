@@ -3,6 +3,7 @@ import { Oswald, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { SmoothScrollProvider } from "@/components/layout/smooth-scroll-provider";
+import { Preloader } from "@/components/preloader/preloader";
 
 const displayFont = Oswald({
   subsets: ["latin"],
@@ -30,7 +31,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={cn("h-full", "antialiased", displayFont.variable, bodyFont.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <SmoothScrollProvider>
+          <Preloader>{children}</Preloader>
+        </SmoothScrollProvider>
       </body>
     </html>
   );
