@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { usePreloaderComplete } from "@/components/preloader/preloader";
@@ -16,6 +17,7 @@ const NAV_LINKS = [
 export function Navbar() {
   const navRef = useRef<HTMLElement>(null);
   const preloaderComplete = usePreloaderComplete();
+  const [open, setOpen] = useState(false);
 
   useGSAP(
     () => {
@@ -50,12 +52,42 @@ export function Navbar() {
           </li>
         ))}
       </ul>
-      <MagneticButton
-        href="#membership"
-        className="rounded-full border border-foreground px-5 py-2 text-sm uppercase tracking-wide text-foreground"
-      >
-        Join
-      </MagneticButton>
+      <div className="flex items-center gap-4">
+        <MagneticButton
+          href="#membership"
+          className="hidden rounded-full border border-foreground px-5 py-2 text-sm uppercase tracking-wide text-foreground md:inline-flex"
+        >
+          Join
+        </MagneticButton>
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          onClick={() => setOpen((value) => !value)}
+          className="text-foreground md:hidden"
+        >
+          <span className="sr-only">Toggle menu</span>
+          {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
+      </div>
+      {open && (
+        <ul
+          id="mobile-nav"
+          className="absolute inset-x-0 top-full flex flex-col gap-4 bg-background p-6 text-foreground md:hidden"
+        >
+          {[...NAV_LINKS, { href: "#membership", label: "Join" }].map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                onClick={() => setOpen(false)}
+                className="block text-sm uppercase tracking-wide"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      )}
     </nav>
   );
 }

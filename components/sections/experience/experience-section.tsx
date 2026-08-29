@@ -44,56 +44,71 @@ export function ExperienceSection() {
       const textPanels = gsap.utils.toArray<HTMLElement>("[data-experience-text]");
       const visualPanels = gsap.utils.toArray<HTMLElement>("[data-experience-visual]");
 
-      // Initial state: intro visible, every step/outro hidden; the first
-      // visual is already showing so the composition feels alive immediately.
-      gsap.set(outroEl, { autoAlpha: 0 });
-      gsap.set(textPanels, { autoAlpha: 0 });
-      gsap.set(visualPanels.slice(1), { autoAlpha: 0 });
-      gsap.set(visualPanels[0], { autoAlpha: 1 });
-
       const totalTransitions = STEPS.length + 1; // intro→step1, step→step ×3, stepN→outro
-      const distancePerTransition = 500;
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: () => `+=${totalTransitions * distancePerTransition}`,
-          pin: true,
-          scrub: 1,
-          onUpdate: (self) => {
-            gsap.set(progressRef.current, { scaleX: self.progress });
+      const mm = gsap.matchMedia();
+      mm.add({ isMobile: "(max-width: 767px)" }, (context) => {
+        const { isMobile } = context.conditions as { isMobile: boolean };
+        const distancePerTransition = isMobile ? 300 : 500;
+
+        // Initial state: intro visible, every step/outro hidden; the first
+        // visual is already showing so the composition feels alive immediately.
+        gsap.set(outroEl, { autoAlpha: 0 });
+        gsap.set(textPanels, { autoAlpha: 0 });
+        gsap.set(visualPanels.slice(1), { autoAlpha: 0 });
+        gsap.set(visualPanels[0], { autoAlpha: 1 });
+
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: () => `+=${totalTransitions * distancePerTransition}`,
+            pin: true,
+            scrub: 1,
+            onUpdate: (self) => {
+              gsap.set(progressRef.current, { scaleX: self.progress });
+            },
           },
-        },
-      });
+        });
 
-      // Beat 1 — intro hands off to the first step.
-      tl.to(introEl, { autoAlpha: 0, duration: DURATION.fast, ease: EASE.standard }, 1).to(
-        textPanels[0],
-        { autoAlpha: 1, duration: DURATION.fast, ease: EASE.standard },
-        1
-      );
+        // Beat 1 — intro hands off to the first step.
+        tl.to(introEl, { autoAlpha: 0, duration: DURATION.fast, ease: EASE.standard }, 1).to(
+          textPanels[0],
+          { autoAlpha: 1, duration: DURATION.fast, ease: EASE.standard },
+          1
+        );
 
-      // Beats 2–4 — step-to-step crossfades, text and visual together.
-      for (let i = 1; i < STEPS.length; i += 1) {
-        const position = i + 1;
-        tl.to(textPanels[i - 1], { autoAlpha: 0, duration: DURATION.fast, ease: EASE.standard }, position)
-          .to(textPanels[i], { autoAlpha: 1, duration: DURATION.fast, ease: EASE.standard }, position)
-          .to(
-            visualPanels[i - 1],
+        // Beats 2–4 — step-to-step crossfades, text and visual together.
+        for (let i = 1; i < STEPS.length; i += 1) {
+          const position = i + 1;
+          tl.to(
+            textPanels[i - 1],
             { autoAlpha: 0, duration: DURATION.fast, ease: EASE.standard },
             position
           )
-          .to(visualPanels[i], { autoAlpha: 1, duration: DURATION.fast, ease: EASE.standard }, position);
-      }
+            .to(textPanels[i], { autoAlpha: 1, duration: DURATION.fast, ease: EASE.standard }, position)
+            .to(
+              visualPanels[i - 1],
+              { autoAlpha: 0, duration: DURATION.fast, ease: EASE.standard },
+              position
+            )
+            .to(
+              visualPanels[i],
+              { autoAlpha: 1, duration: DURATION.fast, ease: EASE.standard },
+              position
+            );
+        }
 
-      // Final beat — the last step resolves into the outro line.
-      const lastPosition = STEPS.length + 1;
-      tl.to(
-        textPanels[STEPS.length - 1],
-        { autoAlpha: 0, duration: DURATION.fast, ease: EASE.standard },
-        lastPosition
-      ).to(outroEl, { autoAlpha: 1, duration: DURATION.fast, ease: EASE.standard }, lastPosition);
+        // Final beat — the last step resolves into the outro line.
+        const lastPosition = STEPS.length + 1;
+        tl.to(
+          textPanels[STEPS.length - 1],
+          { autoAlpha: 0, duration: DURATION.fast, ease: EASE.standard },
+          lastPosition
+        ).to(outroEl, { autoAlpha: 1, duration: DURATION.fast, ease: EASE.standard }, lastPosition);
+      });
+
+      return () => mm.revert();
     },
     { scope: sectionRef, dependencies: [reducedMotion] }
   );
