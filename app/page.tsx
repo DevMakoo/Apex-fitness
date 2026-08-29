@@ -1,12 +1,13 @@
 import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "@/components/sections/hero/hero-section";
 import { ManifestoSection } from "@/components/sections/manifesto/manifesto-section";
 import { ProgramsSection } from "@/components/sections/programs/programs-section";
 import { ExperienceSection } from "@/components/sections/experience/experience-section";
 import { StatsSection } from "@/components/sections/stats/stats-section";
 import { TrainersSection } from "@/components/sections/trainers/trainers-section";
-
-const PLACEHOLDER_SECTIONS = ["membership", "cta"] as const;
+import { MembershipSection } from "@/components/sections/membership/membership-section";
+import { FinalCtaSection } from "@/components/sections/cta/final-cta-section";
 
 export default function Home() {
   return (
@@ -25,16 +26,10 @@ export default function Home() {
         <ExperienceSection />
         <StatsSection />
         <TrainersSection />
-        {PLACEHOLDER_SECTIONS.map((id) => (
-          <section
-            key={id}
-            id={id}
-            className="flex h-screen items-center justify-center border-b border-border text-2xl uppercase tracking-widest text-muted-foreground"
-          >
-            {id} placeholder
-          </section>
-        ))}
+        <MembershipSection />
+        <FinalCtaSection />
       </main>
+      <Footer />
     </>
   );
 }
