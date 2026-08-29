@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/layout/navbar";
+import { HeroSection } from "@/components/sections/hero/hero-section";
 
-const SECTIONS = [
-  "hero",
+const PLACEHOLDER_SECTIONS = [
   "manifesto",
   "programs",
   "experience",
@@ -22,7 +22,8 @@ export default function Home() {
       </a>
       <Navbar />
       <main id="main-content">
-        {SECTIONS.map((id) => (
+        <HeroSection />
+        {PLACEHOLDER_SECTIONS.map((id) => (
           <section
             key={id}
             id={id}
