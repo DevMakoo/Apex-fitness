@@ -2,8 +2,9 @@ import { Navbar } from "@/components/layout/navbar";
 import { HeroSection } from "@/components/sections/hero/hero-section";
 import { ManifestoSection } from "@/components/sections/manifesto/manifesto-section";
 import { ProgramsSection } from "@/components/sections/programs/programs-section";
+import { ExperienceSection } from "@/components/sections/experience/experience-section";
 
-const PLACEHOLDER_SECTIONS = ["experience", "stats", "trainers", "membership", "cta"] as const;
+const PLACEHOLDER_SECTIONS = ["stats", "trainers", "membership", "cta"] as const;
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
         <HeroSection />
         <ManifestoSection />
         <ProgramsSection />
+        <ExperienceSection />
         {PLACEHOLDER_SECTIONS.map((id) => (
           <section
             key={id}
