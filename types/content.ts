@@ -12,6 +12,7 @@ export type Trainer = {
   role: string;
   bio: string;
   imageAlt: string;
+  imageSrc?: string;
 };
 
 export type Stat = {

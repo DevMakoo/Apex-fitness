@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
+import Image from "next/image";
 import type { Trainer } from "@/types/content";
 import { RevealImage } from "@/components/common/reveal-image";
 import { EASE, DURATION } from "@/lib/gsap/tokens";
@@ -44,11 +45,35 @@ export function TrainerCard({ trainer, index }: { trainer: Trainer; index: numbe
         <div data-trainer-photo className="relative h-full w-full">
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute -top-4 left-4 select-none font-display text-6xl leading-none text-muted-foreground/20 md:text-7xl"
+            className="pointer-events-none absolute -top-4 left-4 z-10 select-none font-display text-6xl leading-none text-muted-foreground/20 md:text-7xl"
           >
             {String(index + 1).padStart(2, "0")}
           </span>
-          <div role="img" aria-label={trainer.imageAlt} className="absolute inset-0" />
+          {trainer.imageSrc ? (
+            <Image
+              src={trainer.imageSrc}
+              alt={trainer.imageAlt}
+              fill
+              sizes="(min-width: 768px) 33vw, 100vw"
+              className="object-cover"
+            />
+          ) : (
+            <div
+              role="img"
+              aria-label={trainer.imageAlt}
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              <span
+                aria-hidden="true"
+                className="font-display text-6xl uppercase text-muted-foreground/25 md:text-7xl"
+              >
+                {trainer.name
+                  .split(" ")
+                  .map((word) => word[0])
+                  .join("")}
+              </span>
+            </div>
+          )}
         </div>
       </RevealImage>
       <div className="relative mt-6 inline-block">
