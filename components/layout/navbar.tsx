@@ -79,7 +79,7 @@ export function Navbar() {
         )}
       >
         {[...NAV_LINKS, { href: "#membership", label: "Join" }].map((link) => (
-          <li key={link.href}>
+          <li key={`${link.label}-${link.href}`}>
             <a
               href={link.href}
               onClick={() => setOpen(false)}
