@@ -8,11 +8,11 @@ import { MembershipTierCard } from "./membership-tier-card";
 export function MembershipSection() {
   return (
     <section id="membership" className="bg-background px-6 py-24 md:px-12">
-      <SectionHeading kicker="Membership" title="Choose Your Standard" />
-      <RevealImage className="relative mt-16 aspect-[21/9] w-full overflow-hidden border border-border">
+      <SectionHeading kicker="Planos" title="Escolha o seu padrão" />
+      <RevealImage className="relative mt-16 aspect-[4/3] md:aspect-[21/9] w-full overflow-hidden border border-border">
         <Image
           src="/references/membership/membership-01.jpg"
-          alt="Glass-walled gym floor overlooking palm trees and coastline at golden hour"
+          alt="Salão de treino com paredes de vidro, com vista para palmeiras e para o litoral na hora dourada"
           fill
           sizes="100vw"
           className="object-cover object-[50%_35%]"

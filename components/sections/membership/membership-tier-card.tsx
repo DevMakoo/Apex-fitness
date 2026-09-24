@@ -10,7 +10,7 @@ export function MembershipTierCard({ tier }: { tier: MembershipTier }) {
           !tier.featured && "invisible"
         )}
       >
-        Recommended
+        Recomendado
       </span>
       <h3 className="mt-3 font-display text-subhead uppercase leading-tight text-foreground">
         {tier.name}
@@ -38,7 +38,7 @@ export function MembershipTierCard({ tier }: { tier: MembershipTier }) {
             : "text-foreground hover:bg-foreground hover:text-background"
         )}
       >
-        Choose {tier.name}
+        Escolher {tier.name}
       </a>
     </li>
   );

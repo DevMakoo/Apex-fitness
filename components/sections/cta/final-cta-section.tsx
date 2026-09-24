@@ -23,14 +23,14 @@ export function FinalCtaSection() {
       <div className="relative z-10 flex flex-col items-center">
         <RevealText
           as="h2"
-          lines={["Ready To Become", "The Standard?"]}
+          lines={["Pronto para ser", "o padrão?"]}
           className="font-display text-headline uppercase leading-tight text-foreground"
         />
         <MagneticButton
           href="#membership"
           className="mt-8 inline-flex items-center rounded-full bg-foreground px-8 py-4 text-sm uppercase tracking-wide text-background"
         >
-          Join APEX
+          Entre para a APEX
         </MagneticButton>
       </div>
     </section>

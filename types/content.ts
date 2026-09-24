@@ -3,7 +3,7 @@ export type Program = {
   name: string;
   description: string;
   duration: string;
-  intensity: "Low" | "Moderate" | "High" | "Elite";
+  intensity: "Baixa" | "Moderada" | "Alta" | "Elite";
 };
 
 export type Trainer = {

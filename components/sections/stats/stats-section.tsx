@@ -35,7 +35,7 @@ export function StatsSection() {
 
   return (
     <section id="stats" className="bg-background px-6 py-24 md:px-12">
-      <SectionHeading kicker="By The Numbers" title="Results, Measured" />
+      <SectionHeading kicker="Em números" title="Resultados, medidos" />
       <div ref={gridRef} className="mt-16 grid grid-cols-2 gap-x-8 gap-y-12 md:grid-cols-4">
         {stats.map((stat) => (
           <AnimatedStat key={stat.id} stat={stat} />

@@ -37,12 +37,12 @@ export function ProgramsSection() {
 
   return (
     <section id="programs" className="bg-background px-6 py-24 md:px-12">
-      <SectionHeading kicker="Programs" title="Built To Progress" />
+      <SectionHeading kicker="Programas" title="Feitos para evoluir" />
       <div className="mt-16 grid gap-10 md:grid-cols-[minmax(0,1.7fr)_minmax(0,1fr)] md:gap-12">
         <RevealImage className="relative aspect-[3/4] w-full overflow-hidden border border-border md:aspect-auto md:h-full">
           <Image
             src="/references/programs/program-01.jpg"
-            alt="Athlete silhouetted mid-deadlift, backlit through dust and directional light"
+            alt="Atleta em silhueta no meio de um levantamento terra, com contraluz atravessando a poeira"
             fill
             sizes="(min-width: 768px) 62vw, 100vw"
             className="object-cover object-[50%_25%]"

@@ -8,7 +8,7 @@ export function ManifestoSection() {
     >
       <RevealText
         as="h2"
-        lines={["We don't chase comfort.", "We engineer capacity."]}
+        lines={["Não buscamos conforto.", "Construímos capacidade."]}
         className="max-w-4xl text-center font-display text-headline uppercase leading-tight text-foreground"
       />
     </section>

@@ -10,9 +10,9 @@ import { MagneticButton } from "@/components/common/magnetic-button";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { href: "#programs", label: "Programs" },
-  { href: "#trainers", label: "Trainers" },
-  { href: "#membership", label: "Membership" },
+  { href: "#programs", label: "Programas" },
+  { href: "#trainers", label: "Treinadores" },
+  { href: "#membership", label: "Planos" },
 ] as const;
 
 export function Navbar() {
@@ -40,7 +40,7 @@ export function Navbar() {
     <nav
       ref={navRef}
       data-state="transparent"
-      aria-label="Primary"
+      aria-label="Principal"
       className="fixed inset-x-0 top-0 z-40 flex items-center justify-between px-6 py-5 transition-colors duration-300 data-[state=solid]:bg-background/90 data-[state=solid]:backdrop-blur md:px-12"
     >
       <Link href="#hero" className="font-display text-lg uppercase tracking-widest text-foreground">
@@ -58,7 +58,7 @@ export function Navbar() {
           href="#membership"
           className="hidden rounded-full border border-foreground px-5 py-2 text-sm uppercase tracking-wide text-foreground md:inline-flex"
         >
-          Join
+          Entrar
         </MagneticButton>
         <button
           type="button"
@@ -67,7 +67,7 @@ export function Navbar() {
           onClick={() => setOpen((value) => !value)}
           className="text-foreground md:hidden"
         >
-          <span className="sr-only">Toggle menu</span>
+          <span className="sr-only">Abrir/fechar menu</span>
           {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
       </div>
@@ -78,7 +78,7 @@ export function Navbar() {
           open ? "flex" : "hidden"
         )}
       >
-        {[...NAV_LINKS, { href: "#membership", label: "Join" }].map((link) => (
+        {[...NAV_LINKS, { href: "#membership", label: "Entrar" }].map((link) => (
           <li key={`${link.label}-${link.href}`}>
             <a
               href={link.href}

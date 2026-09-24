@@ -10,23 +10,23 @@ import { ExperienceVisual } from "./experience-visual";
 const STEPS = [
   {
     id: "assess",
-    title: "Assess",
-    copy: "Baseline testing across strength, conditioning, and movement quality.",
+    title: "Avaliar",
+    copy: "Testes iniciais de força, condicionamento e qualidade de movimento.",
   },
   {
     id: "program",
-    title: "Program",
-    copy: "A periodized plan built around your data, not a generic template.",
+    title: "Programar",
+    copy: "Um plano periodizado construído sobre os seus dados, não um modelo genérico.",
   },
   {
     id: "train",
-    title: "Train",
-    copy: "Coached sessions with real-time load and form correction.",
+    title: "Treinar",
+    copy: "Sessões acompanhadas com ajuste de carga e correção de postura em tempo real.",
   },
   {
     id: "adapt",
-    title: "Adapt",
-    copy: "Continuous re-testing keeps the program moving with you.",
+    title: "Adaptar",
+    copy: "Reavaliações contínuas mantêm o programa evoluindo com você.",
   },
 ] as const;
 
@@ -131,7 +131,7 @@ export function ExperienceSection() {
     <section
       id="experience"
       ref={sectionRef}
-      className="relative h-screen overflow-hidden bg-background"
+      className={reducedMotion ? "relative bg-background" : "relative h-screen overflow-hidden bg-background"}
     >
       <div
         className={
@@ -151,30 +151,30 @@ export function ExperienceSection() {
           {STEPS.map((step, index) =>
             reducedMotion ? (
               <div key={step.id} className="aspect-[4/3] w-full">
-                <ExperienceVisual index={index} label={`Visual for the ${step.title} phase`} />
+                <ExperienceVisual index={index} label={`Imagem da fase ${step.title}`} />
               </div>
             ) : (
               <div key={step.id} data-experience-visual className="absolute inset-0">
-                <ExperienceVisual index={index} label={`Visual for the ${step.title} phase`} />
+                <ExperienceVisual index={index} label={`Imagem da fase ${step.title}`} />
               </div>
             )
           )}
         </div>
 
         {/* Narrative text panel */}
-        <div className={reducedMotion ? "flex flex-col gap-16" : "relative w-full md:w-1/2"}>
+        <div className={reducedMotion ? "flex flex-col gap-16" : "relative h-44 w-full md:h-auto md:w-1/2"}>
           <div
             data-experience-intro
             className={reducedMotion ? undefined : "absolute inset-0 flex flex-col justify-center"}
           >
             <p className="text-caption uppercase tracking-widest text-muted-foreground">
-              The Process
+              O Processo
             </p>
             <h2 className="mt-3 font-display text-headline uppercase leading-tight text-foreground">
-              The APEX Method
+              O Método APEX
             </h2>
             <p className="mt-6 max-w-md text-body text-muted-foreground">
-              Four phases, repeated relentlessly. Every session builds on data from the last.
+              Quatro fases, repetidas sem trégua. Cada sessão se apoia nos dados da anterior.
             </p>
           </div>
 
@@ -199,10 +199,10 @@ export function ExperienceSection() {
             className={reducedMotion ? undefined : "absolute inset-0 flex flex-col justify-center"}
           >
             <p className="text-caption uppercase tracking-widest text-muted-foreground">
-              The Result
+              O Resultado
             </p>
             <h3 className="mt-3 max-w-md font-display text-headline uppercase leading-tight text-foreground">
-              Every Rep, Measured.
+              Cada repetição, medida.
             </h3>
           </div>
         </div>

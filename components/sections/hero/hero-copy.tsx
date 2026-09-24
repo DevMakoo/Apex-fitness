@@ -33,14 +33,14 @@ export function HeroCopy() {
         as="p"
         trigger="manual"
         active={preloaderComplete}
-        lines={["Est. Performance"]}
+        lines={["Performance desde 2017"]}
         className="text-caption uppercase tracking-widest text-muted-foreground"
       />
       <RevealText
         as="h1"
         trigger="manual"
         active={preloaderComplete}
-        lines={["Train Like The", "Machine You Are"]}
+        lines={["Treine como a", "máquina que você é"]}
         className="mt-4 font-display text-display uppercase leading-[0.9] text-foreground"
       />
       <div
@@ -49,14 +49,14 @@ export function HeroCopy() {
         style={{ opacity: reducedMotion ? 1 : 0 }}
       >
         <p className="text-body text-muted-foreground">
-          APEX is a performance training studio built for athletes who refuse to plateau. Precision
-          programming, elite coaching, uncompromising standards.
+          A APEX é um estúdio de treinamento de performance feito para atletas que se recusam a
+          estagnar. Programação de precisão, coaching de elite, padrões inegociáveis.
         </p>
         <MagneticButton
           href="#membership"
           className="mt-8 inline-flex items-center rounded-full bg-foreground px-6 py-3 text-sm uppercase tracking-wide text-background"
         >
-          Start Training
+          Comece a treinar
         </MagneticButton>
       </div>
     </div>

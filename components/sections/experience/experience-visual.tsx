@@ -13,6 +13,14 @@ const PHASE_IMAGES = [
     src: "/references/experience/experience-02.jpg",
     position: "object-[50%_25%]",
   },
+  {
+    src: "/references/programs/program-03.jpg",
+    position: "object-[50%_30%]",
+  },
+  {
+    src: "/references/trainers/trainer-02.jpg",
+    position: "object-[50%_20%]",
+  },
 ] as const;
 
 export function ExperienceVisual({ index, label }: { index: number; label: string }) {

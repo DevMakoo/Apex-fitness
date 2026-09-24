@@ -19,15 +19,15 @@ const bodyFont = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "APEX — Performance Training Studio",
+  title: "APEX — Estúdio de Treinamento de Performance",
   description:
-    "APEX is a premium performance training studio for athletes who refuse to plateau.",
+    "A APEX é um estúdio premium de treinamento de performance para atletas que se recusam a estagnar.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="pt-BR"
       className={cn("h-full", "antialiased", displayFont.variable, bodyFont.variable, "font-sans")}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">

@@ -14,11 +14,11 @@ export function HeroSection() {
       >
         <Image
           src="/references/hero/hero-01.jpg"
-          alt="Group of athletes in dark performance apparel, dramatically lit against a black studio background"
+          alt="Grupo de atletas com roupas de performance escuras, iluminados de forma dramática contra um fundo preto de estúdio"
           fill
           priority
           sizes="(min-width: 1024px) 56vw, (min-width: 768px) 64vw, 100vw"
-          className="object-cover object-[60%_25%]"
+          className="object-cover object-[50%_25%]"
         />
       </div>
       <div

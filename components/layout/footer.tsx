@@ -1,7 +1,7 @@
 const FOOTER_LINKS = [
-  { href: "#programs", label: "Programs" },
-  { href: "#trainers", label: "Trainers" },
-  { href: "#membership", label: "Membership" },
+  { href: "#programs", label: "Programas" },
+  { href: "#trainers", label: "Treinadores" },
+  { href: "#membership", label: "Planos" },
 ] as const;
 
 export function Footer() {
@@ -10,7 +10,7 @@ export function Footer() {
       <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
         <div>
           <p className="font-display text-lg uppercase tracking-widest text-foreground">Apex</p>
-          <p className="mt-2 max-w-xs text-body">Performance training, engineered.</p>
+          <p className="mt-2 max-w-xs text-body">Treinamento de performance, projetado.</p>
         </div>
         <ul className="flex gap-6 text-sm uppercase tracking-wide">
           {FOOTER_LINKS.map((link) => (
@@ -20,7 +20,7 @@ export function Footer() {
           ))}
         </ul>
       </div>
-      <p className="mt-12 text-xs">© {new Date().getFullYear()} APEX Performance Studio. All rights reserved.</p>
+      <p className="mt-12 text-xs">© {new Date().getFullYear()} APEX Performance Studio. Todos os direitos reservados.</p>
     </footer>
   );
 }
